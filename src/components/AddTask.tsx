@@ -20,15 +20,18 @@ const AddTask = () => {
         const userTaskarray = [...userTaskList];
         userTaskarray.push(task)
         setUserTaskLIst(userTaskarray)
+        setTask('')
     }
 
     const handleEditTask = (id: number) => {
         console.log(id, 'edit ');
+        const userTaskarray = [...userTaskList];
+        console.log(userTaskarray, 'edit arry');
 
     }
 
-    const handleDeleteTask = () => {
-        console.log('delete karne bhai');
+    const handleDeleteTask = (id: number) => {
+        console.log(id, 'delete');
     }
 
     return (

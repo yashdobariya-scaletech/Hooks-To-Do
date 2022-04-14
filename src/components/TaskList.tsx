@@ -13,7 +13,7 @@ const style = {
 interface Props {
   taskData: string[];
   onEdit: (id: number) => void;
-  onDelete: () => void;
+  onDelete: (id: number) => void;
 }
 
 const TaskList: React.FC<Props> = (props) => {
@@ -35,12 +35,12 @@ const TaskList: React.FC<Props> = (props) => {
                   </div>
                   <div className='d-flex'>
                     <div>
-                      <Button variant="contained" onClick={() => props.onEdit}>
+                      <Button variant="contained" onClick={() => props.onEdit(i)}>
                         Edit
                       </Button>
                     </div>
                     <div>
-                      <Button variant="outlined" onClick={props.onDelete} startIcon={<DeleteIcon />}>
+                      <Button variant="outlined" onClick={() => props.onDelete(i)} startIcon={<DeleteIcon />}>
                         Delete
                       </Button>
                     </div>
