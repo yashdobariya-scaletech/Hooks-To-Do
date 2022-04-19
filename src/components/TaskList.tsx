@@ -4,6 +4,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import { Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+
 const style = {
   width: '100%',
   maxWidth: 360,
@@ -12,21 +13,19 @@ const style = {
 
 interface Props {
   taskData: string[];
-  onEdit: (id: number) => void;
-  onDelete: (id: number) => void;
+  onEdit: (e: any, index: number) => void;
+  onDelete: (index: number) => void;
 }
 
 const TaskList: React.FC<Props> = (props) => {
-
-  console.log(props.taskData, 'asdasd')
   return (
     <>
       <div className='list-wrap'>
         <div>
           <List sx={style} component="nav" aria-label="mailbox folders">
             <div className='task-list-wrap'>
-              {props.taskData.map((task, i) => (
-                <div className='d-flex' key={i}>
+              {props.taskData.map((task, index) => (
+                <div className='d-flex' key={index}>
                   <div className='task-list'>
                     <ListItem>
                       <ListItemText primary={task} />
@@ -35,12 +34,12 @@ const TaskList: React.FC<Props> = (props) => {
                   </div>
                   <div className='d-flex'>
                     <div>
-                      <Button variant="contained" onClick={() => props.onEdit(i)}>
+                      <Button variant="contained" onClick={(e) => props.onEdit(e, index)}>
                         Edit
                       </Button>
                     </div>
                     <div>
-                      <Button variant="outlined" onClick={() => props.onDelete(i)} startIcon={<DeleteIcon />}>
+                      <Button variant="outlined" onClick={() => props.onDelete(index)} startIcon={<DeleteIcon />}>
                         Delete
                       </Button>
                     </div>
