@@ -1,4 +1,5 @@
 import { TextField, Button } from "@mui/material";
+import { useSelector } from "react-redux";
 
 interface Props {
     task: string;
@@ -10,11 +11,15 @@ interface Props {
 
 const AddTask: React.FC<Props> = (props) => {
 
+    const task = useSelector((state) => state)
+    console.log(task, 'tttttttt');
+
+
     return (
         <div>
             <TextField
                 label="Add Task"
-                value={props.task}
+                value={task}
                 onChange={(e) => props.onChange(e)}
             />
             {!props.onEdit ?
