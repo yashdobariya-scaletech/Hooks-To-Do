@@ -8,11 +8,11 @@ export const addTask = (task) => {
   };
 
   
-  export const editTask = (task) => {
+  export const editTask = (index) => {
     return (dispatch) => {
       dispatch({
-        type: "ADD",
-        payload: task,
+        type: "EDIT",
+        payload: index,
       });
     };
   };
@@ -21,7 +21,7 @@ export const addTask = (task) => {
 export const deleteTask = (task) => {
     return (dispatch) => {
       dispatch({
-        type: "ADD",
+        type: "DELETE",
         payload: task,
       });
     };
@@ -31,19 +31,8 @@ export const deleteTask = (task) => {
   export const updateTask = (task) => {
     return (dispatch) => {
       dispatch({
-        type: "ADD",
+        type: "UPDATE",
         payload: task,
       });
     };
   };
-
-
-  export const Task = (task) => {
-    return (dispatch) => {
-      dispatch({
-        type: "ADD",
-        payload: task,
-      });
-    };
-  };
-

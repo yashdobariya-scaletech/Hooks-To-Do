@@ -4,6 +4,9 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import { Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import * as actionCreators from '../actionCreater/action'
+import { useDispatch, useSelector } from 'react-redux';
+import { State } from '../reducers/interface';
 
 const style = {
   width: '100%',
@@ -13,18 +16,23 @@ const style = {
 
 interface Props {
   taskData: string[];
-  onEdit: (e: any, index: number) => void;
-  onDelete: (index: number) => void;
+  onEdit: (index: number) => void;
+  // onDelete: (index: number) => void;
 }
 
 const TaskList: React.FC<Props> = (props) => {
+  const disptach: any = useDispatch();
+  const userTaskList: string[] = useSelector((state: State) => state.taskList || [])
+  console.log(userTaskList, 'userTaskList');
+
+
   return (
     <>
       <div className='list-wrap'>
         <div>
           <List sx={style} component="nav" aria-label="mailbox folders">
             <div className='task-list-wrap'>
-              {props.taskData.map((task, index) => (
+              {userTaskList.map((task, index) => (
                 <div className='d-flex' key={index}>
                   <div className='task-list'>
                     <ListItem>
@@ -34,12 +42,16 @@ const TaskList: React.FC<Props> = (props) => {
                   </div>
                   <div className='d-flex'>
                     <div>
-                      <Button variant="contained" onClick={(e) => props.onEdit(e, index)}>
+                      <Button variant="contained" onClick={(e) => {
+                        disptach(actionCreators.editTask(index))
+                        // const value = userTaskList[index]
+                        props.onEdit(index)
+                      }}>
                         Edit
                       </Button>
                     </div>
                     <div>
-                      <Button variant="outlined" onClick={() => props.onDelete(index)} startIcon={<DeleteIcon />}>
+                      <Button variant="outlined" onClick={() => disptach(actionCreators.deleteTask(index))} startIcon={<DeleteIcon />}>
                         Delete
                       </Button>
                     </div>

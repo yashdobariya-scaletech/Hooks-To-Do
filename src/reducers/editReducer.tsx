@@ -1,5 +1,6 @@
+const initialState: string[] = []
 
-const EditTask = (state: any, action: any) => {
+const EditTask = (state: string[] = initialState, action: any) => {
     switch (action.type) {
         case 'EDIT':
             return {

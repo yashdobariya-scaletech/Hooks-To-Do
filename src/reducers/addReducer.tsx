@@ -1,5 +1,7 @@
 
-const AddTask = (state: any, action: any) => {
+const initialState: string[] = []
+
+const AddTask = (state: string[] = initialState, action: any) => {
     switch (action.type) {
         case 'ADD':
             return {

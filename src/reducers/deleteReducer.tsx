@@ -1,5 +1,7 @@
 
-const DeleteTask = (state: any, action: any) => {
+const initialState: string[] = []
+
+const DeleteTask = (state: string[] = initialState, action: any) => {
     switch (action.type) {
         case 'DELETE':
             return {

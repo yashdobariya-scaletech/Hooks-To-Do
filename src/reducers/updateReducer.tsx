@@ -1,5 +1,6 @@
+const initialState: string[] = []
 
-const UpdateTask = (state: any, action: any) => {
+const UpdateTask = (state: string[] = initialState, action: any) => {
     switch (action.type) {
         case 'UPDATE':
             return {
