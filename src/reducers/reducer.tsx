@@ -23,17 +23,21 @@ const initialState: State = { taskList: [] };
 
 const RootReducer = (state = initialState, action: any) => {
     console.log(state, 'state');
-    // console.log(initialState, 'initialState');
+    console.log(action.payload, 'palyload');
 
     switch (action.type) {
-        case 'EDIT':
-            return { taskList: [...state.taskList, action.payload] }
         case 'ADD':
             return { taskList: [...state.taskList, action.payload] }
-        case 'DELETE':
-            return { deleting: action.payload }
         case 'UPDATE':
-            return { updating: action.payload }
+            const taskList = [...state.taskList]
+            taskList[action.payload.index] = action.payload.task
+            return {
+                taskList: [...taskList]
+            }
+        case 'DELETE':
+            const userTaskList = [...state.taskList]
+            userTaskList.splice(action.payload, 1)
+            return { taskList: [...userTaskList] }
         default:
             return state;
     }

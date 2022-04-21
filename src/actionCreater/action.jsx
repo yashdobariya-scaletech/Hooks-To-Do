@@ -18,21 +18,22 @@ export const addTask = (task) => {
   };
 
 
-export const deleteTask = (task) => {
+export const deleteTask = (index) => {
     return (dispatch) => {
       dispatch({
         type: "DELETE",
-        payload: task,
+        payload: index,
       });
     };
   };
 
 
-  export const updateTask = (task) => {
+  export const updateTask = (index,task) => {
     return (dispatch) => {
       dispatch({
         type: "UPDATE",
-        payload: task,
+        payload: {index:index,task:task,}
+
       });
     };
   };

@@ -17,7 +17,6 @@ const style = {
 interface Props {
   taskData: string[];
   onEdit: (index: number) => void;
-  // onDelete: (index: number) => void;
 }
 
 const TaskList: React.FC<Props> = (props) => {
@@ -42,9 +41,7 @@ const TaskList: React.FC<Props> = (props) => {
                   </div>
                   <div className='d-flex'>
                     <div>
-                      <Button variant="contained" onClick={(e) => {
-                        disptach(actionCreators.editTask(index))
-                        // const value = userTaskList[index]
+                      <Button variant="contained" onClick={() => {
                         props.onEdit(index)
                       }}>
                         Edit
